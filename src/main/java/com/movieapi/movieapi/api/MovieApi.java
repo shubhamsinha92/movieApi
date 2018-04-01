@@ -1,0 +1,27 @@
+package com.movieapi.movieapi.api;
+
+import com.movieapi.movieapi.models.CreditsListResponse;
+import com.movieapi.movieapi.models.MovieListResponse;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+
+public interface MovieApi {
+  @GET("/3/discover/movie")
+  @Headers({"Accept: application/json", "Content-Type: application/json"})
+  Call<MovieListResponse> getMoviesList(@Query("api_key") String apiKey,
+                                        @Query("primary_release_date.gte")
+                                            String primaryReleaseDateGreaterThan,
+                                        @Query("primary_release_date.lte")
+                                            String primaryReleaseDateLessThan,
+                                        @Query("page") String page
+  );
+
+  @GET("/3/movie/{movieId}/credits")
+  @Headers({"Accept: application/json", "Content-Type: application/json"})
+  Call<CreditsListResponse> getCreditsList(@Path(value = "movieId") String movieId,
+                                           @Query("api_key") String apiKey);
+
+}
