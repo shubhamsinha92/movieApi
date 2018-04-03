@@ -51,7 +51,7 @@ public class MovieApiController {
                                        String dateGreaterThan,
                                        String dateLessThan) {
     return MessageFormat.format(
-        "The number actors and actresses were in at least one movie and at least one tv episode between"
+        "The number actors and actresses were in at least one movie and at least one tv episode between "
             + "{0} and " + "{1} " + "are: {2}",
         dateGreaterThan,
         dateLessThan,
