@@ -14,7 +14,6 @@ public class MovieApiConfig {
   @Bean
   public MovieApiService movieApiService(ObjectMapper objectMapper) {
     return new MovieApiService("https://api.themoviedb.org/",
-                               "606aaffd7ca10f0b80804a1f0674e4e1",
                                objectMapper);
   }
 }

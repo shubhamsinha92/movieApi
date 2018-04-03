@@ -5,18 +5,17 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class CreditsListResponse {
-  @JsonProperty("id")
-  private Integer id;
+public class TvCreditsListResponse {
+
   @JsonProperty("cast")
   private List<Cast> cast;
   @JsonProperty("crew")
   private List<Crew> crew;
+  @JsonProperty("id")
+  private Integer id;
 
   @Data
   public static class Cast {
-    @JsonProperty("cast_id")
-    private Integer castId;
     @JsonProperty("character")
     private String character;
     @JsonProperty("credit_id")
@@ -48,6 +47,8 @@ public class CreditsListResponse {
     @JsonProperty("name")
     private String name;
     @JsonProperty("profile_path")
-    private Object profilePath;
+    private String profilePath;
   }
+
+
 }

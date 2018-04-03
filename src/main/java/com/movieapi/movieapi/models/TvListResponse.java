@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class MovieListResponse {
+public class TvListResponse {
   @JsonProperty("page")
   private Integer page;
   @JsonProperty("total_results")
@@ -15,31 +15,30 @@ public class MovieListResponse {
   @JsonProperty("results")
   private List<Result> results;
 
+  @Data
   public static class Result {
-    @JsonProperty("popularity")
-    private Double popularity;
-    @JsonProperty("id")
-    private Integer id;
-    @JsonProperty("video")
-    private Boolean video;
-    @JsonProperty("vote_count")
-    private Integer voteCount;
-    @JsonProperty("vote_average")
-    private Double voteAverage;
-    @JsonProperty("title")
-    private String title;
-    @JsonProperty("release_date")
-    private String releaseDate;
-    @JsonProperty("original_language")
-    private String originalLanguage;
-    @JsonProperty("original_title")
-    private String originalTitle;
+    @JsonProperty("original_name")
+    private String originalName;
     @JsonProperty("genre_ids")
     private List<Integer> genreIds;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("popularity")
+    private Double popularity;
+    @JsonProperty("origin_country")
+    private List<String> originCountry;
+    @JsonProperty("vote_count")
+    private Integer voteCount;
+    @JsonProperty("first_air_date")
+    private String firstAirDate;
     @JsonProperty("backdrop_path")
     private String backdropPath;
-    @JsonProperty("adult")
-    private Boolean adult;
+    @JsonProperty("original_language")
+    private String originalLanguage;
+    @JsonProperty("id")
+    private Integer id;
+    @JsonProperty("vote_average")
+    private Integer voteAverage;
     @JsonProperty("overview")
     private String overview;
     @JsonProperty("poster_path")

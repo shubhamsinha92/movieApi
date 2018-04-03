@@ -11,7 +11,6 @@ public class MovieApiService {
   private MovieApi movieApi;
 
   public MovieApiService(String apiUrl,
-                         String apiKey,
                          ObjectMapper objectMapper) {
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
 
