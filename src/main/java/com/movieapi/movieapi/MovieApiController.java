@@ -3,7 +3,6 @@ package com.movieapi.movieapi;
 import java.text.MessageFormat;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.CacheManager;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +16,11 @@ public class MovieApiController {
   private static final int ONE = 1;
   private MovieService testMovieService;
 
-  private CacheManager cacheManager;
-
   private Map<String, Integer> commonActorCount;
 
   @Autowired
-  public MovieApiController(MovieService testMovieService, CacheManager cacheManager) {
+  public MovieApiController(MovieService testMovieService) {
     this.testMovieService = testMovieService;
-    this.cacheManager = cacheManager;
     this.commonActorCount = new HashMap<>();
   }
 
@@ -67,17 +63,19 @@ public class MovieApiController {
     List<Integer> tvIds = new ArrayList<>();
     Integer currentMovieCount = 1;
     Integer currentTvCount = 1;
-    while (currentMovieCount <= testMovieService.getTotalMoviePageCount(ONE,
-                                                                        dateGreaterThan,
-                                                                        dateLessThan)) {
+    int totalPageCountForMovies = testMovieService.getTotalMoviePageCount(ONE,
+                                                                          dateGreaterThan,
+                                                                          dateLessThan);
+    int totalPageCountForTv = testMovieService.getTotalTvPageCount(ONE,
+                                                                   dateGreaterThan,
+                                                                   dateLessThan);
+    while (currentMovieCount <= totalPageCountForMovies) {
       movieIds.addAll(testMovieService.getMovieIds(currentMovieCount,
                                                    dateGreaterThan,
                                                    dateLessThan));
       ++currentMovieCount;
     }
-    while (currentTvCount <= testMovieService.getTotalTvPageCount(ONE,
-                                                                  dateGreaterThan,
-                                                                  dateLessThan)) {
+    while (currentTvCount <= totalPageCountForTv) {
       tvIds.addAll(testMovieService.getTvIds(currentTvCount, dateGreaterThan, dateLessThan));
       ++currentTvCount;
     }

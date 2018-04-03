@@ -25,7 +25,7 @@ public class MovieService {
 
   @Autowired
   public MovieService(MovieApiService movieApiService,
-                      @Value("{movie.apiKey}") String apiKey) {
+                      @Value("${movie.apiKey}") String apiKey) {
     this.movieApiService = movieApiService;
     this.apiKey = apiKey;
   }

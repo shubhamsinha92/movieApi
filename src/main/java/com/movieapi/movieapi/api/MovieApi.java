@@ -1,7 +1,9 @@
 package com.movieapi.movieapi.api;
 
-import com.movieapi.movieapi.models.CreditsListResponse;
+import com.movieapi.movieapi.models.MovieCreditsListResponse;
 import com.movieapi.movieapi.models.MovieListResponse;
+import com.movieapi.movieapi.models.TvCreditsListResponse;
+import com.movieapi.movieapi.models.TvListResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -21,7 +23,22 @@ public interface MovieApi {
 
   @GET("/3/movie/{movieId}/credits")
   @Headers({"Accept: application/json", "Content-Type: application/json"})
-  Call<CreditsListResponse> getCreditsList(@Path(value = "movieId") String movieId,
-                                           @Query("api_key") String apiKey);
+  Call<MovieCreditsListResponse> getCreditsListforMovie(@Path(value = "movieId") String movieId,
+                                                        @Query("api_key") String apiKey);
+
+  @GET("/3/tv/{tvId}/credits")
+  @Headers({"Accept: application/json", "Content-Type: application/json"})
+  Call<TvCreditsListResponse> getCreditsListforTv(@Path(value = "tvId") String tvId,
+                                                  @Query("api_key") String apiKey);
+
+  @GET("/3/discover/tv")
+  @Headers({"Accept: application/json", "Content-Type: application/json"})
+  Call<TvListResponse> getTvList(@Query("api_key") String apiKey,
+                                 @Query("first_air_date.gte")
+                                            String firstAirDateGreaterThan,
+                                 @Query("first_air_date.lte")
+                                            String firstAirDateLessThan,
+                                 @Query("page") String page
+  );
 
 }

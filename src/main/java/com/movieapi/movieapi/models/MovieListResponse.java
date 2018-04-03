@@ -15,6 +15,7 @@ public class MovieListResponse {
   @JsonProperty("results")
   private List<Result> results;
 
+  @Data
   public static class Result {
     @JsonProperty("popularity")
     private Double popularity;

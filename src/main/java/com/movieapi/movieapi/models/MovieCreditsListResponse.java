@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class CreditsListResponse {
+public class MovieCreditsListResponse {
   @JsonProperty("id")
   private Integer id;
   @JsonProperty("cast")
