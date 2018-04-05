@@ -73,11 +73,11 @@ public class MovieApiController {
       movieIds.addAll(testMovieService.getMovieIds(currentMovieCount,
                                                    dateGreaterThan,
                                                    dateLessThan));
-      ++currentMovieCount;
+        currentMovieCount++;
     }
     while (currentTvCount <= totalPageCountForTv) {
       tvIds.addAll(testMovieService.getTvIds(currentTvCount, dateGreaterThan, dateLessThan));
-      ++currentTvCount;
+      currentTvCount++;
     }
     //System.out.println("Total size of tv id List is: " + tvIds.size());
 
